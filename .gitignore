@@ -11,6 +11,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
+*.xlsx
 local.properties
 .classpath
 .settings/
