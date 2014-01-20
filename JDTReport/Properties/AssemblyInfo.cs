@@ -7,9 +7,9 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JDTReport")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("JDT Report Creator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Empirical Testing Corp.")]
 [assembly: AssemblyProduct("JDTReport")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
