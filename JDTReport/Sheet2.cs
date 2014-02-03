@@ -131,15 +131,26 @@ namespace JDTReport
 
         public void Add_Metric_Calculations(Excel.Worksheet RawData_Sheet)
         {
+            // Creates the range for average report write times
             Excel.Range Metric1 = RawData_Sheet.get_Range("K1", "K" + RawData_Sheet.UsedRange.Rows.Count);
-            Excel.Range Metric2 = RawData_Sheet.get_Range("L1", "L" + RawData_Sheet.UsedRange.Rows.Count);
 
+            // Creates the range for the average check times
+            Excel.Range Metric2 = RawData_Sheet.get_Range("L1", "L" + RawData_Sheet.UsedRange.Rows.Count);
+            
+            // Creates the range for the average invoice times
+            Excel.Range Metric3 = RawData_Sheet.get_Range("M1", "M" + RawData_Sheet.UsedRange.Rows.Count);
+
+            // Sets the formula for the average report write times (excludes those written by May or Shah)
+            Metric1.Formula = "=IF(AND(B1=\"A\" , (G1-E1)>=0, F1 <> \"May\", F1 <> \"Shah\"), G1-E1, \" Invalid\" )";
+            
+            // Sets the formula for the average report check times (no exclusions needed as rows marked invalid from previous formula are deleted)
             Metric2.Formula = "=IF((H1-G1)>=0, H1-G1, \" Invalid\" )";
 
-            Metric1.Formula = "=IF(AND(B1=\"A\" , (G1-E1)>=0, F1 <> \"May\", F1 <> \"Shah\"), G1-E1, \" Invalid\" )";
+            Metric3.Formula = "=IF((J1-I1)>=0, J1-I1, \" Invalid\" )";
 
             Metric1.Cells[1] = "Time for Report";
             Metric2.Cells[1] = "Time for Check";
+            Metric3.Cells[1] = "Time for Invoice";
         }
 
         public void Delete_Empty_Rows(Excel.Worksheet RawData_Sheet, Excel.Range TestEnd_Range)
